@@ -16,6 +16,23 @@ class ViewController: UIViewController {
         
         self.title = "FirstVC"
         
+        createButton()
+        
+        let simpleSwitch = UISwitch()
+        simpleSwitch.isOn = true
+        simpleSwitch.addTarget(self, action: #selector(switchIsChanged(param:)), for: .valueChanged)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: simpleSwitch)
+    }
+    
+    @objc func switchIsChanged(param: UISwitch) {
+        if param.isOn {
+            print("sw is on")
+        } else {
+            print("sw is off")
+        }
+    }
+    
+    fileprivate func createButton() {
         self.displaySecondButton = UIButton(type: .system)
         self.displaySecondButton.setTitle("SecondVC", for: .normal)
         displaySecondButton.sizeToFit()
